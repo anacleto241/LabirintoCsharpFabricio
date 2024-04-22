@@ -56,58 +56,58 @@ static void buscarQueijo(char[,] meuLab, int i, int j)
  
                     meuLab[i, j] = 'v';
 
-                //verificação se o queijo esta na posicao seguinte
+                
                 if (j + 1 < limit && meuLab[i, j + 1] == 'Q')
                 {
-                    minhaPilha.Push((i, j)); // empilhar posição atual
-                    j++; // mover para a direita
+                    minhaPilha.Push((i, j)); 
+                    j++; 
                 }
                 else if (i + 1 < limit && meuLab[i + 1, j] == 'Q')
                 {
-                    minhaPilha.Push((i, j)); // empilhar posição atual
-                    i++; // mover para baixo
+                    minhaPilha.Push((i, j)); 
+                    i++; 
                 }
 
                 else if (j - 1 >= 0 && meuLab[i, j - 1] == 'Q')
                 {
-                    minhaPilha.Push((i, j)); // empilhar posição atual
-                    j--; // mover para a esquerda
+                    minhaPilha.Push((i, j)); 
+                    j--; 
                 }
                 else if (i - 1 >= 0 && meuLab[i - 1, j] == 'Q')
                 {
-                    minhaPilha.Push((i, j)); // empilhar posição atual
-                    i--; // mover para cima
+                    minhaPilha.Push((i, j)); 
+                    i--;
                 }else if(j + 1 < limit && meuLab[i, j + 1] == '.')
                     {
-                        minhaPilha.Push((i, j)); // empilhar posição atual
-                        j++; // mover para a direita
+                        minhaPilha.Push((i, j));
+                        j++;
                     }
                     else if (i + 1 < limit && meuLab[i + 1, j] == '.')
                     {
-                        minhaPilha.Push((i, j)); // empilhar posição atual
-                        i++; // mover para baixo
+                        minhaPilha.Push((i, j)); 
+                        i++;
                     }
 
                     else if (j - 1 >= 0 && meuLab[i, j - 1] == '.')
                     {
-                        minhaPilha.Push((i, j)); // empilhar posição atual
-                        j--; // mover para a esquerda
+                        minhaPilha.Push((i, j)); 
+                        j--; 
                     }
                     else if (i - 1 >= 0 && meuLab[i - 1, j] == '.')
                     {
-                        minhaPilha.Push((i, j)); // empilhar posição atual
-                        i--; // mover para cima
+                        minhaPilha.Push((i, j)); 
+                        i--; 
                     }
                     else
                     {
                         if (minhaPilha.Count > 0)
                         {
-                            (i, j) = minhaPilha.Pop(); // desempilhar posição anterior
+                            (i, j) = minhaPilha.Pop(); 
                         }
                         else
                         {
                             Console.WriteLine("Não foi possível encontrar o queijo!");
-                            return; // sair da função se a pilha estiver vazia
+                            return; 
                         }
                     }
                 System.Threading.Thread.Sleep(200);
