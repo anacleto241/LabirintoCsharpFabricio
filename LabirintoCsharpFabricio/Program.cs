@@ -59,26 +59,44 @@ static void buscarQueijo(char[,] meuLab, int i, int j)
  
                     meuLab[i, j] = 'v';
 
-                    //verificação se o queijo esta na posicao seguinte
-        
+                //verificação se o queijo esta na posicao seguinte
+                if (j + 1 < limit && meuLab[i, j + 1] == 'Q')
+                {
+                    minhaPilha.Push((i, j)); // empilhar posição atual
+                    j++; // mover para a direita
+                }
+                else if (i + 1 < limit && meuLab[i + 1, j] == 'Q')
+                {
+                    minhaPilha.Push((i, j)); // empilhar posição atual
+                    i++; // mover para baixo
+                }
 
-                    if (j + 1 < limit && meuLab[i, j + 1] == '.' || meuLab[i, j + 1] == 'Q')
+                else if (j - 1 >= 0 && meuLab[i, j - 1] == 'Q')
+                {
+                    minhaPilha.Push((i, j)); // empilhar posição atual
+                    j--; // mover para a esquerda
+                }
+                else if (i - 1 >= 0 && meuLab[i - 1, j] == 'Q')
+                {
+                    minhaPilha.Push((i, j)); // empilhar posição atual
+                    i--; // mover para cima
+                }else if(j + 1 < limit && meuLab[i, j + 1] == '.')
                     {
                         minhaPilha.Push((i, j)); // empilhar posição atual
                         j++; // mover para a direita
                     }
-                    else if (i + 1 < limit && meuLab[i + 1, j] == '.' || meuLab[i + 1, j] == 'Q')
+                    else if (i + 1 < limit && meuLab[i + 1, j] == '.')
                     {
                         minhaPilha.Push((i, j)); // empilhar posição atual
                         i++; // mover para baixo
                     }
 
-                    else if (j - 1 >= 0 && meuLab[i, j - 1] == '.' || meuLab[i, j - 1] == 'Q')
+                    else if (j - 1 >= 0 && meuLab[i, j - 1] == '.')
                     {
                         minhaPilha.Push((i, j)); // empilhar posição atual
                         j--; // mover para a esquerda
                     }
-                    else if (i - 1 >= 0 && meuLab[i - 1, j] == '.' || meuLab[i - 1, j] == 'Q')
+                    else if (i - 1 >= 0 && meuLab[i - 1, j] == '.')
                     {
                         minhaPilha.Push((i, j)); // empilhar posição atual
                         i--; // mover para cima
