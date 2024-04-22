@@ -47,40 +47,43 @@ namespace LabirintoCSharp
             meuLab[x, y] = 'Q';
         }
 
-    static void buscarQueijo(char[,] meuLab, int i, int j)
+static void buscarQueijo(char[,] meuLab, int i, int j)
 {
     Stack<(int, int)> minhaPilha = new Stack<(int, int)>();
 
         while (meuLab[i, j] != 'Q') {
+                if (meuLab[i, j] == 'Q')
                 {
-                    if (meuLab[i, j] == 'Q')
-                    {
-                        Console.WriteLine("Queijo encontrado!");
-                        return;
-                    }
+                    return;
+                }
+ 
                     meuLab[i, j] = 'v';
 
-                    if (j + 1 < limit && meuLab[i, j + 1] == '.')
+                    //verificação se o queijo esta na posicao seguinte
+        
+
+                    if (j + 1 < limit && meuLab[i, j + 1] == '.' || meuLab[i, j + 1] == 'Q')
                     {
                         minhaPilha.Push((i, j)); // empilhar posição atual
                         j++; // mover para a direita
                     }
-                    else if (i + 1 < limit && meuLab[i + 1, j] == '.')
+                    else if (i + 1 < limit && meuLab[i + 1, j] == '.' || meuLab[i + 1, j] == 'Q')
                     {
                         minhaPilha.Push((i, j)); // empilhar posição atual
                         i++; // mover para baixo
                     }
 
-                    else if (j - 1 >= 0 && meuLab[i, j - 1] == '.')
+                    else if (j - 1 >= 0 && meuLab[i, j - 1] == '.' || meuLab[i, j - 1] == 'Q')
                     {
                         minhaPilha.Push((i, j)); // empilhar posição atual
                         j--; // mover para a esquerda
                     }
-                    else if (i - 1 >= 0 && meuLab[i - 1, j] == '.')
+                    else if (i - 1 >= 0 && meuLab[i - 1, j] == '.' || meuLab[i - 1, j] == 'Q')
                     {
                         minhaPilha.Push((i, j)); // empilhar posição atual
                         i--; // mover para cima
-                    }else
+                    }
+                    else
                     {
                         if (minhaPilha.Count > 0)
                         {
@@ -92,18 +95,14 @@ namespace LabirintoCSharp
                             return; // sair da função se a pilha estiver vazia
                         }
                     }
-                }
+                System.Threading.Thread.Sleep(200);
+                Console.Clear();
+                mostrarLabirinto(meuLab, limit, limit);
+            }
 
-        System.Threading.Thread.Sleep(200);
-        Console.Clear();
-        mostrarLabirinto(meuLab, limit, limit);
+        Console.WriteLine("Queijo encontrado!");
 
-    }
-}
-
-
-
-
+        }
 
 
 
