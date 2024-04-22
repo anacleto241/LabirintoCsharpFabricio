@@ -52,10 +52,7 @@ static void buscarQueijo(char[,] meuLab, int i, int j)
     Stack<(int, int)> minhaPilha = new Stack<(int, int)>();
 
         while (meuLab[i, j] != 'Q') {
-                if (meuLab[i, j] == 'Q')
-                {
-                    return;
-                }
+                
  
                     meuLab[i, j] = 'v';
 
