@@ -100,9 +100,11 @@ static void buscarQueijo(char[,] meuLab, int i, int j)
                     }
                     else
                     {
+                    
                         if (minhaPilha.Count > 0)
                         {
-                            (i, j) = minhaPilha.Pop(); 
+                        meuLab[i, j] = 'X';
+                        (i, j) = minhaPilha.Pop(); 
                         }
                         else
                         {
